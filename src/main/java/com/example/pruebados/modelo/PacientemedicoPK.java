@@ -1,27 +1,21 @@
-package com.example.pruebados.tablas;
+package com.example.pruebados.modelo;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
-@Entity
-@Table(name="Pacientemedico")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-
-@IdClass(PacientemedicoPK.class)
-public class Pacientemedico {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PacientemedicoPK implements Serializable {
+    @Column(name = "PACIENTE_ID", insertable=false, updatable=false)
     @Id
-    @Column(name = "PACIENTE_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger pacienteId;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MEDICO_ID", insertable=false, updatable=false)
     @Id
-    @Column(name = "MEDICO_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger medicoId;
 
     public BigInteger getPacienteId() {
@@ -45,7 +39,7 @@ public class Pacientemedico {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Pacientemedico that = (Pacientemedico) o;
+        PacientemedicoPK that = (PacientemedicoPK) o;
 
         if (pacienteId != null ? !pacienteId.equals(that.pacienteId) : that.pacienteId != null) return false;
         if (medicoId != null ? !medicoId.equals(that.medicoId) : that.medicoId != null) return false;

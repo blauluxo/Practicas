@@ -1,4 +1,4 @@
-package com.example.pruebados.tablas;
+package com.example.pruebados.modelo;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,6 +19,7 @@ public class Cita {
     @Id
     @Column(name = "ID_CITA")
     private BigInteger idCita;
+
     @Basic
     @Column(name = "FECHAHORA")
     private Date fechahora;
@@ -28,12 +29,24 @@ public class Cita {
     @Basic
     @Column(name = "ATRIBUTO11")
     private BigInteger atributo11;
+
+
+    //esta son las referencias a las otras entiendades
     @Basic
     @Column(name = "PACIENTE_ID")
     private BigInteger pacienteId;
     @Basic
     @Column(name = "MEDICO_ID")
     private BigInteger medicoId;
+
+
+//---------------la relacion como un paciente o medico, puede o no, tener muchas citas
+    @ManyToOne
+    @JoinColumn(name = "PACIENTE_ID", referencedColumnName = "PACIENTE_ID", nullable = false, insertable=false, updatable=false)
+    private Paciente paciente;
+    @ManyToOne
+    @JoinColumn(name = "MEDICO_ID", referencedColumnName = "MEDICO_ID", nullable = false, insertable=false, updatable=false)
+    private Medico medico;
 
     public BigInteger getIdCita() {
         return idCita;

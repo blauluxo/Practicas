@@ -1,4 +1,4 @@
-package com.example.pruebados.tablas;
+package com.example.pruebados.modelo;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
-import java.util.Collection;
 
 @Entity
 @Table(name="Medico")
@@ -14,26 +13,29 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Medico {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+    @Basic
     @Column(name = "USUARIO_ID")
     private BigInteger usuarioId;
     @Basic
     @Column(name = "NUMCOLEGIADO")
     private String numcolegiado;
 
-    /*
-    @OneToMany(mappedBy = "medicoByMedicoId")
-    private Collection<Cita> citasByUsuarioId;
 
-     */
+
+    //------------esto es para la relacion 1 a muchos de entre paciente y medico----------
+    @Basic
+    @Column(name = "PACIENTE_ID")
+    private BigInteger pacienteId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "MEDICO_ID")
+    private BigInteger medicoId;
+
+
     @OneToOne
     @JoinColumn(name = "USUARIO_ID", referencedColumnName = "ID", nullable = false, insertable=false, updatable=false)
+
     private Usuario usuarioByUsuarioId;
-
-
-  //  @OneToMany(mappedBy = "medicoByMedicoId")
-   // private Collection<Pacientemedico> pacientemedicosByUsuarioId;
 
     public BigInteger getUsuarioId() {
         return usuarioId;

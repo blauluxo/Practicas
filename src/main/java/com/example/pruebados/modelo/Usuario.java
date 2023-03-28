@@ -1,34 +1,20 @@
-package com.example.pruebados.tablas;
+package com.example.pruebados.modelo;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
 
 @Entity
 @Table(name="Usuario")
 @Data
-@AllArgsConstructor
-
 public class Usuario {
-
-
-    public Usuario(String nombre, String apellidos, String usuaio, String clave) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.usuaio = usuaio;
-        this.clave = clave;
-    }
-    public Usuario (){
-
-    }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID")
-    private BigInteger id;
+    private Integer id;
 
     @Basic
     @Column(name = "NOMBRE")
@@ -43,11 +29,13 @@ public class Usuario {
     @Column(name = "CLAVE")
     private String clave;
 
-    public BigInteger getId() {
+
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

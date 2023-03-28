@@ -1,4 +1,4 @@
-package com.example.pruebados.tablas;
+package com.example.pruebados.modelo;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,7 +27,7 @@ public class Diagnostico {
     @Basic
     @Column(name = "CITA_ID")
     private BigInteger citaId;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "CITA_ID", referencedColumnName = "ID_CITA", nullable = false, insertable=false, updatable=false)
     private Cita citaByCitaId;
 
