@@ -1,52 +1,69 @@
-package com.example.pruebados.modelo;
+package com.example.pruebados.Logs;
 
 import jakarta.persistence.*;
 
-import java.math.BigInteger;
-
+import java.util.List;
+/*
 @Entity
-@IdClass(PacientemedicoPK.class)
-public class Pacientemedico {
+@Table (name="PacienteMedico")
+*/
 
+public class Pacientemedico {
+/*
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-
     @Column(name = "PACIENTE_ID",nullable = false, insertable=false, updatable=false)
-    private BigInteger pacienteId;
+    private Integer pacienteId;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "MEDICO_ID", nullable = false, insertable=false, updatable=false)
-    private BigInteger medicoId;
-
+    private Integer medicoId;
 
 
     //-------------vamos a hacer la relacion---------------
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "PACIENTE_ID", referencedColumnName = "PACIENTE_ID")
-    private Paciente paciente;
+    private List<Paciente> pacientes;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "MEDICO_ID", referencedColumnName = "MEDICO_ID")
-    private Medico medico;
+    private List<Medico> medicos;;
 
 
 
-    public BigInteger getPacienteId() {
+
+    public Integer getPacienteId() {
         return pacienteId;
     }
 
-    public void setPacienteId(BigInteger pacienteId) {
+    public void setPacienteId(Integer pacienteId) {
         this.pacienteId = pacienteId;
     }
 
-    public BigInteger getMedicoId() {
+    public Integer getMedicoId() {
         return medicoId;
     }
 
-    public void setMedicoId(BigInteger medicoId) {
+    public void setMedicoId(Integer medicoId) {
         this.medicoId = medicoId;
     }
 
+
+    public List<Paciente> getPacientes() {
+        return pacientes;
+    }
+
+    public void setPacientes(List<Paciente> pacientes) {
+        this.pacientes = pacientes;
+    }
+
+    public List<Medico> getMedicos() {
+        return medicos;
+    }
+
+    public void setMedicos(List<Medico> medicos) {
+        this.medicos = medicos;
+    }
 
 
     @Override
@@ -68,4 +85,7 @@ public class Pacientemedico {
         result = 31 * result + (medicoId != null ? medicoId.hashCode() : 0);
         return result;
     }
+
+
+ */
 }

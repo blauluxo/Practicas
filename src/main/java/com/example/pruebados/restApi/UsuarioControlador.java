@@ -8,35 +8,35 @@ import java.math.BigInteger;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Usarios/usu")
-public class usuarioControlador {
+@RequestMapping("/api/usuarios")
+public class UsuarioControlador {
 
     private final com.example.pruebados.service.usuarioServicio usuarioServicio;
 
-    public usuarioControlador(com.example.pruebados.service.usuarioServicio usuarioServicio) {
+    public UsuarioControlador(com.example.pruebados.service.usuarioServicio usuarioServicio) {
         this.usuarioServicio = usuarioServicio;
     }
 
-    @PostMapping
+    @PostMapping("/anadir")
     public Usuario crearUsuario(@RequestBody Usuario usuarios){
         return usuarioServicio.crearUsuario(usuarios);
     }
 
     @GetMapping("/{id}")
-    public Usuario getUsuarioByID(@PathVariable BigInteger id) {
-    return usuarioServicio.getUsuariobyID(id);
+    public Usuario getUsuarioByID(@PathVariable Integer id) {
+        return usuarioServicio.getUsuariobyID(id);
     }
-
+    @GetMapping("/lista")
     public List<Usuario> getTodosUsuarios(){
         return usuarioServicio.getTodosUsuarios();
     }
-
+    @GetMapping("/{nombre}")
     public Usuario getUsuariobyNombre(@PathVariable String nombre) {
         return usuarioServicio.getUsuariobyNombre(nombre);
     }
 
-    @DeleteMapping//("/{id}")
-    public void borrarUsuario(@PathVariable BigInteger id) {
+    @DeleteMapping("/borrar/{id}")
+    public void borrarUsuario(@PathVariable Integer id) {
         usuarioServicio.borrarUsuario(id);
     }
 

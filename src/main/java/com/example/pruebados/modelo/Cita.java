@@ -18,7 +18,7 @@ public class Cita {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID_CITA")
-    private BigInteger idCita;
+    private Integer idCita;
 
     @Basic
     @Column(name = "FECHAHORA")
@@ -28,16 +28,16 @@ public class Cita {
     private String motivocita;
     @Basic
     @Column(name = "ATRIBUTO11")
-    private BigInteger atributo11;
+    private Integer atributo11;
 
 
     //esta son las referencias a las otras entiendades
     @Basic
     @Column(name = "PACIENTE_ID")
-    private BigInteger pacienteId;
+    private Integer pacienteId;
     @Basic
     @Column(name = "MEDICO_ID")
-    private BigInteger medicoId;
+    private Integer medicoId;
 
 
 //---------------la relacion como un paciente o medico, puede o no, tener muchas citas
@@ -48,11 +48,11 @@ public class Cita {
     @JoinColumn(name = "MEDICO_ID", referencedColumnName = "MEDICO_ID", nullable = false, insertable=false, updatable=false)
     private Medico medico;
 
-    public BigInteger getIdCita() {
+    public Integer getIdCita() {
         return idCita;
     }
 
-    public void setIdCita(BigInteger idCita) {
+    public void setIdCita(Integer idCita) {
         this.idCita = idCita;
     }
 
@@ -72,27 +72,27 @@ public class Cita {
         this.motivocita = motivocita;
     }
 
-    public BigInteger getAtributo11() {
+    public Integer getAtributo11() {
         return atributo11;
     }
 
-    public void setAtributo11(BigInteger atributo11) {
+    public void setAtributo11(Integer atributo11) {
         this.atributo11 = atributo11;
     }
 
-    public BigInteger getPacienteId() {
+    public Integer getPacienteId() {
         return pacienteId;
     }
 
-    public void setPacienteId(BigInteger pacienteId) {
+    public void setPacienteId(Integer pacienteId) {
         this.pacienteId = pacienteId;
     }
 
-    public BigInteger getMedicoId() {
+    public Integer getMedicoId() {
         return medicoId;
     }
 
-    public void setMedicoId(BigInteger medicoId) {
+    public void setMedicoId(Integer medicoId) {
         this.medicoId = medicoId;
     }
 

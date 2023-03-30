@@ -6,45 +6,53 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Medico")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Medico {
-    @Basic
-    @Column(name = "USUARIO_ID")
-    private BigInteger usuarioId;
+public class Medico extends Usuario{
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "MEDICO_ID")
+    private Integer medicoId;
     @Basic
     @Column(name = "NUMCOLEGIADO")
     private String numcolegiado;
 
 
-
     //------------esto es para la relacion 1 a muchos de entre paciente y medico----------
+
+    @ManyToMany(mappedBy = "medicos")
+    List<Paciente> paciente = new ArrayList<>();
+/*
+
     @Basic
-    @Column(name = "PACIENTE_ID")
-    private BigInteger pacienteId;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "MEDICO_ID")
-    private BigInteger medicoId;
+    @Column(name = "USUARIO_ID")
+    private Integer usuarioId;
 
 
     @OneToOne
     @JoinColumn(name = "USUARIO_ID", referencedColumnName = "ID", nullable = false, insertable=false, updatable=false)
-
     private Usuario usuarioByUsuarioId;
 
-    public BigInteger getUsuarioId() {
+    @Basic
+    @Column(name = "PACIENTE_ID")
+    private Integer pacienteId;
+*/
+/*
+    public Integer getUsuarioId() {
         return usuarioId;
     }
 
-    public void setUsuarioId(BigInteger usuarioId) {
+    public void setUsuarioId(Integer usuarioId) {
         this.usuarioId = usuarioId;
     }
-
+*/
     public String getNumcolegiado() {
         return numcolegiado;
     }
@@ -60,7 +68,7 @@ public class Medico {
 
         Medico medico = (Medico) o;
 
-        if (usuarioId != null ? !usuarioId.equals(medico.usuarioId) : medico.usuarioId != null) return false;
+    //    if (usuarioId != null ? !usuarioId.equals(medico.usuarioId) : medico.usuarioId != null) return false;
         if (numcolegiado != null ? !numcolegiado.equals(medico.numcolegiado) : medico.numcolegiado != null)
             return false;
 
@@ -69,7 +77,7 @@ public class Medico {
 
     @Override
     public int hashCode() {
-        int result = usuarioId != null ? usuarioId.hashCode() : 0;
+        int result = 0;
         result = 31 * result + (numcolegiado != null ? numcolegiado.hashCode() : 0);
         return result;
     }
@@ -82,6 +90,7 @@ public class Medico {
      //   this.citasByUsuarioId = citasByUsuarioId;
    // }
 
+/*
     public Usuario getUsuarioByUsuarioId() {
         return usuarioByUsuarioId;
     }
@@ -89,6 +98,7 @@ public class Medico {
     public void setUsuarioByUsuarioId(Usuario usuarioByUsuarioId) {
         this.usuarioByUsuarioId = usuarioByUsuarioId;
     }
+*/
 
    // public Collection<Pacientemedico> getPacientemedicosByUsuarioId() {
     //    return pacientemedicosByUsuarioId;

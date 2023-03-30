@@ -17,7 +17,7 @@ public class Diagnostico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID_DIAGNOSTICO")
-    private BigInteger idDiagnostico;
+    private Integer idDiagnostico;
     @Basic
     @Column(name = "VALORACIONESPECIALISTA")
     private String valoracionespecialista;
@@ -31,11 +31,11 @@ public class Diagnostico {
     @JoinColumn(name = "CITA_ID", referencedColumnName = "ID_CITA", nullable = false, insertable=false, updatable=false)
     private Cita citaByCitaId;
 
-    public BigInteger getIdDiagnostico() {
+    public Integer getIdDiagnostico() {
         return idDiagnostico;
     }
 
-    public void setIdDiagnostico(BigInteger idDiagnostico) {
+    public void setIdDiagnostico(Integer idDiagnostico) {
         this.idDiagnostico = idDiagnostico;
     }
 

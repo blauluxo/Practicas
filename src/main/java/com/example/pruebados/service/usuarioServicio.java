@@ -23,7 +23,7 @@ public class usuarioServicio {
          return usuarioRepositorio.save(usuario);
     }
 
-    public Usuario getUsuariobyID(BigInteger id){
+    public Usuario getUsuariobyID(Integer id){
         return usuarioRepositorio.findById(id).get();
     }
 
@@ -39,7 +39,7 @@ public class usuarioServicio {
 
 
     @DeleteMapping//("/{id}")
-    public void borrarUsuario(@PathVariable BigInteger id) {
+    public void borrarUsuario(@PathVariable Integer id) {
         Optional<Usuario> optionalUsuario = usuarioRepositorio.findById(id);
         if (optionalUsuario.isPresent()) {
             Usuario usuarioAEliminar = optionalUsuario.get();

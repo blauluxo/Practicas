@@ -9,8 +9,9 @@ import java.math.BigInteger;
 @Entity
 @Table(name="Usuario")
 @Data
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Usuario {
-
+//herencia JPA
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID")
@@ -23,8 +24,8 @@ public class Usuario {
     @Column(name = "APELLIDOS")
     private String apellidos;
     @Basic
-    @Column(name = "USUAIO")
-    private String usuaio;
+    @Column(name = "USUARIO")
+    private String usuario;
     @Basic
     @Column(name = "CLAVE")
     private String clave;
@@ -56,11 +57,11 @@ public class Usuario {
     }
 
     public String getUsuaio() {
-        return usuaio;
+        return usuario;
     }
 
     public void setUsuaio(String usuaio) {
-        this.usuaio = usuaio;
+        this.usuario = usuaio;
     }
 
     public String getClave() {
@@ -81,7 +82,7 @@ public class Usuario {
         if (id != null ? !id.equals(usuario.id) : usuario.id != null) return false;
         if (nombre != null ? !nombre.equals(usuario.nombre) : usuario.nombre != null) return false;
         if (apellidos != null ? !apellidos.equals(usuario.apellidos) : usuario.apellidos != null) return false;
-        if (usuaio != null ? !usuaio.equals(usuario.usuaio) : usuario.usuaio != null) return false;
+        if (usuario != null ? !usuario.equals(usuario.usuario) : usuario.usuario != null) return false;
         if (clave != null ? !clave.equals(usuario.clave) : usuario.clave != null) return false;
 
         return true;
@@ -92,8 +93,19 @@ public class Usuario {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (apellidos != null ? apellidos.hashCode() : 0);
-        result = 31 * result + (usuaio != null ? usuaio.hashCode() : 0);
+        result = 31 * result + (usuario != null ? usuario.hashCode() : 0);
         result = 31 * result + (clave != null ? clave.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", usuario='" + usuario + '\'' +
+                ", clave='" + clave + '\'' +
+                '}';
     }
 }
