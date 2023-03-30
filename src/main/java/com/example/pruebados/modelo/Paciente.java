@@ -32,8 +32,8 @@ public class Paciente extends Usuario {
     @ManyToMany
     @JoinTable(
             name = "medicoPaciente",
-            joinColumns = @JoinColumn(name = "pacienteId"),
-            inverseJoinColumns = @JoinColumn(name = "medicoId")
+            joinColumns = @JoinColumn(name = "PACIENTE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "MEDICO_ID")
     )
     private List<Medico> medicos = new ArrayList<>();
 
